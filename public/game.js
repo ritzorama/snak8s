@@ -3,6 +3,13 @@ const GRID_SIZE = 20;
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 600;
 
+// Helper function to escape HTML to prevent XSS
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // CNCF Themes (will be populated from server)
 let CNCF_THEMES = [];
 
@@ -57,10 +64,16 @@ function initializeThemes() {
         option.className = 'theme-option';
         option.style.backgroundColor = theme.color;
         option.style.color = '#fff';
-        option.innerHTML = `
-            <div class="theme-logo">${theme.logo}</div>
-            <div>${theme.name}</div>
-        `;
+        
+        const logo = document.createElement('div');
+        logo.className = 'theme-logo';
+        logo.textContent = theme.logo;
+        
+        const name = document.createElement('div');
+        name.textContent = theme.name;
+        
+        option.appendChild(logo);
+        option.appendChild(name);
         option.addEventListener('click', () => selectTheme(index));
         themeSelector.appendChild(option);
     });
@@ -289,15 +302,33 @@ function updateLeaderboard() {
         
         const theme = player.theme || CNCF_THEMES[0];
         
-        item.innerHTML = `
-            <div class="player-info">
-                <span class="player-logo">${theme.logo}</span>
-                <span class="player-name">${index + 1}. ${player.name}</span>
-                ${!player.alive ? '<span style="color: #dc3545;">💀</span>' : ''}
-            </div>
-            <span class="player-score">${player.score}</span>
-        `;
+        const playerInfo = document.createElement('div');
+        playerInfo.className = 'player-info';
         
+        const playerLogo = document.createElement('span');
+        playerLogo.className = 'player-logo';
+        playerLogo.textContent = theme.logo;
+        
+        const playerName = document.createElement('span');
+        playerName.className = 'player-name';
+        playerName.textContent = `${index + 1}. ${player.name}`;
+        
+        playerInfo.appendChild(playerLogo);
+        playerInfo.appendChild(playerName);
+        
+        if (!player.alive) {
+            const deadIcon = document.createElement('span');
+            deadIcon.style.color = '#dc3545';
+            deadIcon.textContent = '💀';
+            playerInfo.appendChild(deadIcon);
+        }
+        
+        const playerScore = document.createElement('span');
+        playerScore.className = 'player-score';
+        playerScore.textContent = player.score;
+        
+        item.appendChild(playerInfo);
+        item.appendChild(playerScore);
         leaderboardList.appendChild(item);
     });
 }
