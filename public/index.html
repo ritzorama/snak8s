@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snak8s - Cloud Native Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☸️ SNAK8S ☸️</h1>
+            <p class="tagline">A Cloud-Native Multiplayer Snake Experience</p>
+        </header>
+
+        <div id="menuScreen" class="screen">
+            <div class="menu-content">
+                <h2>Deploy Your Snake Pod</h2>
+                <div class="form-group">
+                    <label for="playerName">Snake Deployment Name:</label>
+                    <input type="text" id="playerName" placeholder="my-awesome-snake-v1" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="roomId">Namespace (Room ID):</label>
+                    <input type="text" id="roomId" placeholder="default" value="default">
+                </div>
+                <div class="form-group">
+                    <label>Select Your Color Scheme:</label>
+                    <div id="themeSelector" class="theme-selector"></div>
+                </div>
+                <button id="startButton" class="btn btn-primary">🚀 Deploy Snake</button>
+                
+                <div class="info-box">
+                    <h3>📜 Game Mechanics</h3>
+                    <ul>
+                        <li>Use arrow keys or WASD to navigate your snake pod</li>
+                        <li>Consume CNCF project logos to scale your snake</li>
+                        <li>Avoid collisions with other snakes and yourself</li>
+                        <li>Build combos for bonus points (eat quickly!)</li>
+                        <li>Different food types give different points</li>
+                    </ul>
+                    <h3>🎯 Scoring System</h3>
+                    <ul>
+                        <li>☸️ Kubernetes Pod: 10 points (+5 combo bonus)</li>
+                        <li>📊 Prometheus Metric: 10 points (+5 combo bonus)</li>
+                        <li>⎈ Helm Chart: 15 points (+10 combo bonus)</li>
+                        <li>📦 Container Image: 20 points (+15 combo bonus)</li>
+                        <li>👁️ Full Observability Stack: 25 points (+20 combo bonus)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameScreen" class="screen hidden">
+            <div class="game-info">
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Your Score:</span>
+                        <span id="score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Combo:</span>
+                        <span id="combo" class="stat-value">0x</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Pods Active:</span>
+                        <span id="playersCount" class="stat-value">1</span>
+                    </div>
+                </div>
+                <button id="leaveButton" class="btn btn-secondary">⬅️ Leave Namespace</button>
+            </div>
+            
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+            </div>
+            
+            <div id="commentary" class="commentary"></div>
+            
+            <div class="leaderboard">
+                <h3>📊 Live Metrics Dashboard</h3>
+                <div id="leaderboardList"></div>
+            </div>
+        </div>
+
+        <div id="gameOverScreen" class="screen hidden">
+            <div class="game-over-content">
+                <h2>🔥 Snake Pod Terminated 🔥</h2>
+                <p id="gameOverMessage" class="game-over-message"></p>
+                <div class="final-stats">
+                    <div class="final-stat">
+                        <span class="stat-label">Final Score:</span>
+                        <span id="finalScore" class="stat-value">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="stat-label">Max Combo:</span>
+                        <span id="maxCombo" class="stat-value">0x</span>
+                    </div>
+                </div>
+                <button id="restartButton" class="btn btn-primary">♻️ Redeploy</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with ❤️ for the CNCF community | Not affiliated with any CNCF projects</p>
+    </footer>
+
+    <script src="game.js"></script>
+</body>
+</html>

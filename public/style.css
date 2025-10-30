@@ -1,0 +1,380 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.screen {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #333;
+    width: 100%;
+    max-width: 900px;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.menu-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.menu-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #667eea;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.theme-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.theme-option {
+    padding: 15px 10px;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.theme-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.theme-option.selected {
+    border-color: #333;
+    transform: scale(1.05);
+}
+
+.theme-logo {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.info-box {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.info-box h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.info-box ul {
+    list-style-position: inside;
+    color: #555;
+}
+
+.info-box li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+#gameCanvas {
+    display: block;
+    background: #1a1a2e;
+}
+
+.commentary {
+    background: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin: 15px 0;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+}
+
+.commentary:empty {
+    display: none;
+}
+
+.leaderboard {
+    margin-top: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.leaderboard h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#leaderboardList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.leaderboard-item.dead {
+    opacity: 0.5;
+    border-left-color: #dc3545;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-logo {
+    font-size: 1.5rem;
+}
+
+.player-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.player-score {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+.game-over-content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.game-over-content h2 {
+    color: #dc3545;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.game-over-message {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: #555;
+    font-style: italic;
+}
+
+.final-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 30px 0;
+}
+
+.final-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .theme-selector {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .stats {
+        gap: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+
+    .final-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
