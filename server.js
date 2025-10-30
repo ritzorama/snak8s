@@ -80,7 +80,7 @@ class Game {
       name: playerData.name,
       theme: playerData.theme,
       snake: [
-        { x: Math.floor(Math.random() * 30) * this.gridSize, y: Math.floor(Math.random() * 20) * this.gridSize }
+        { x: Math.floor(Math.random() * (this.width / this.gridSize)) * this.gridSize, y: Math.floor(Math.random() * (this.height / this.gridSize)) * this.gridSize }
       ],
       direction: { x: this.gridSize, y: 0 },
       nextDirection: { x: this.gridSize, y: 0 },

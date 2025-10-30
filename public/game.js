@@ -128,7 +128,7 @@ function connectWebSocket() {
 // Start game
 startButton.addEventListener('click', () => {
     playerName = playerNameInput.value.trim() || 'anonymous-snake';
-    playerId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+    playerId = Date.now().toString() + Math.random().toString(36).substring(2, 11);
     
     currentScore = 0;
     currentCombo = 0;
