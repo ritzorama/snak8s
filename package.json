@@ -1,0 +1,24 @@
+{
+  "name": "snak8s",
+  "version": "1.0.0",
+  "description": "A cloud-native multiplayer snake game with CNCF flair",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "multiplayer",
+    "kubernetes",
+    "cncf",
+    "cloud-native"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  }
+}
